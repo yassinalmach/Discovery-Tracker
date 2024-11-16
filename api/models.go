@@ -1,24 +1,26 @@
 package api
 
-type ArtistType struct {
+const URL = "https://groupietrackers.herokuapp.com/api"
+
+type Artists struct {
 	Id           int
 	Name         string
 	Image        string
 	Members      []string
 	CreationDate int
 	FirstAlbum   string
-	Location     LocationType
-	Date         DateType
-	Relation     RelationType
+	Location     Locations
+	Date         Dates
+	Relation     Relations
 }
 
-type LocationType struct {
+type Locations struct {
 	Location []string
 }
 
-type DateType struct {
+type Dates struct {
 	Date []string
 }
-type RelationType struct {
+type Relations struct {
 	Relation map[string][]string
 }
