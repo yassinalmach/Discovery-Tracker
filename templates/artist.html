@@ -4,11 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{.Name}}</title>
 </head>
 
 <body>
+    <h2>{{.Name}}</h2>
+    <img src="{{.Image}}" alt="{{.Name}}">
+    <div>
+        <h3>Members:</h3>
+        {{range .Members}}
+        <li>{{.}}</li>
+        {{end}}
+        
+        <h3>Creation Date:</h3>
+        {{.CreationDate}}
 
+        <h3>First Album:</h3>
+        {{.FirstAlbum}}
+
+        <h3>Locations:</h3>
+        {{range .Location.Location}}
+        <li>{{.}}</li>
+        {{end}}
+
+        <h3>Concert Dates:</h3>
+        {{range .Date.Date}}
+        <li>{{.}}</li>
+        {{end}}
+
+        <h3>Locations With Dates:</h3>
+        {{range $key, $value := .Relation.Relation}}
+        <dt>{{$key}} :</dt>
+        {{range $value}}
+        <dd>{{.}}</dd>
+        {{end}}
+        {{end}}
+    </div>
 </body>
 
 </html>
