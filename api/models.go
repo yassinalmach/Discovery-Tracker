@@ -1,26 +1,26 @@
 package api
 
-const URL = "https://groupietrackers.herokuapp.com/api"
+const URL = "https://groupietrackers.herokuapp.com/api/"
 
 type Artists struct {
-	Id           int
-	Name         string
-	Image        string
-	Members      []string
-	CreationDate int
-	FirstAlbum   string
+	Id           int      `json:"id"`
+	Name         string   `json:"name"`
+	Image        string   `json:"image"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
 	Location     Locations
 	Date         Dates
 	Relation     Relations
 }
 
 type Locations struct {
-	Location []string
+	Location []string `json:"locations"`
 }
 
 type Dates struct {
-	Date []string
+	Date []string `json:"dates"`
 }
 type Relations struct {
-	Relation map[string][]string
+	Relation map[string][]string `json:"datesLocations"`
 }
