@@ -4,41 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/artist.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
     <title>{{.Name}}</title>
 </head>
 
 <body>
-    <h2>{{.Name}}</h2>
-    <img src="{{.Image}}" alt="{{.Name}}">
-    <div>
-        <h3>Members:</h3>
-        {{range .Members}}
-        <li>{{.}}</li>
-        {{end}}
-        
-        <h3>Creation Date:</h3>
-        {{.CreationDate}}
+    <div class="container">
+        <!-- header part -->
+        <div class="header">
+            <p>{{.Name}}</p>
+            <a href="/">Home</a>
+        </div>
 
-        <h3>First Album:</h3>
-        {{.FirstAlbum}}
+        <!-- top part -->
+        <div class="top-section">
+            <img src="{{.Image}}" alt="{{.Name}}">
+            <div class="artist">
+                <div class="members">
+                    <h3>Members:</h3>
+                    <ul>
+                        {{range .Members}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
 
-        <h3>Locations:</h3>
-        {{range .Location.Location}}
-        <li>{{.}}</li>
-        {{end}}
+                <div>
+                    <h3>Creation Date:</h3>
+                    <ul>
+                        <li>{{.CreationDate}}</li>
+                    </ul>
+                </div>
 
-        <h3>Concert Dates:</h3>
-        {{range .Date.Date}}
-        <li>{{.}}</li>
-        {{end}}
+                <div>
+                    <h3>First Album:</h3>
+                    <ul>
+                        <li>{{.FirstAlbum}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <h3>Locations With Dates:</h3>
-        {{range $key, $value := .Relation.Relation}}
-        <dt>{{$key}} :</dt>
-        {{range $value}}
-        <dd>{{.}}</dd>
-        {{end}}
-        {{end}}
+        <!-- bottom part -->
+        <div class="bottom-section">
+            <div class="location">
+                <h3>Concert Location:</h3>
+                <ul>
+                    {{range .Location.Location}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+
+            <div class="dates">
+                <h3>Concert Dates:</h3>
+                <ul>
+                    {{range .Date.Date}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+
+            <div class="relation">
+                <h3>Locations with Dates:</h3>
+                {{range $key, $values := .Relation.Relation}}
+                <ul>
+                    <li>{{$key}}:</li>
+                    {{range $values}}
+                    <li style="list-style: none;">{{.}}</li>
+                    {{end}}
+                </ul>
+                {{end}}
+            </div>
+        </div>
     </div>
 </body>
 

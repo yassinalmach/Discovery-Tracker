@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="/static/home.css">
+    <title>Groupie Tracker</title>
+</head>
+
+<body>
+    <div class="top-section">
+        <a href="/">
+            <h1>Groupie Tracker</h1>
+        </a>
+        <h2>Discover the best artists</h2>
+    </div>
+
+    <div class="container">
+        <div class="artists">
+            {{range .}}
+            <div class="card">
+                <a href="/artist/{{.Id}}">
+                    <img src="{{.Image}}" alt="{{.Name}}">
+                    <h3 class="name">{{.Name}}</h3>
+                </a>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</body>
+
+</html>
