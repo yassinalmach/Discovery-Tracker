@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"groupie/api"
 	"groupie/utils"
 	"net/http"
 	"strconv"
@@ -14,12 +13,6 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 		utils.PageNotFound(w, r)
 		return
 	}
-	
-	var data api.Artists
-	api.FetchData(w, api.URL+"artists/"+id, &data)
-	api.FetchData(w, api.URL+"locations/"+id, &data.Location)
-	api.FetchData(w, api.URL+"dates/"+id, &data.Date)
-	api.FetchData(w, api.URL+"relation/"+id, &data.Relation)
-	
-	parseTemplate(w, "artist.html", data)
+
+	// parseTemplate(w, "artist.html", data)
 }
