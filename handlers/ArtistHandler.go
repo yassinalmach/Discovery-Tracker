@@ -16,5 +16,5 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	parseTemplate(w, "artist.html", api.AllData[ID-1])
+	parseTemplate(w, "artist.html", api.AllArtists[ID-1])
 }

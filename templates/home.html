@@ -16,11 +16,50 @@
             <h1>Groupie Tracker</h1>
         </a>
         <h2>Discover the best artists</h2>
+        <!-- filter section -->
+        <div class="filter-section">
+            <form action="/" method="POST" class="filter-form">
+                <div class="creation-date">
+                    <h3>Filter By Creation Date:</h3>
+                    <input type="number" min="1957" max="2024" placeholder="Min" name="minValueDate">
+                    <input type="number" min="1957" max="2024" placeholder="Max" name="maxValueDate">
+                </div>
+
+                <div class="members">
+                    <h3>Filter By Members:</h3>
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="1">1
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="2">2
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="3">3
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="4">4
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="5">5
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="6">6
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="7">7
+                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="8">8
+                </div>
+
+                <div class="first-album">
+                    <h3>Filter By First Album:</h3>
+                    <input type="number" min="1960" max="2024" placeholder="Min" name="minValueAlbum">
+                    <input type="number" min="1960" max="2024" placeholder="Max" name="maxValueAlbum">
+                </div>
+
+                <div class="location">
+                    <h3>Filter By Locations:</h3>
+                    <input type="text" name="location" list="filter-location" placeholder="type a place" autocomplete="off">
+                    <datalist id="filter-location">
+                    </datalist>
+                </div>
+
+                <div class="submit">
+                    <button type="submit" class="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="container">
         <div class="artists">
-            {{range .}}
+            {{range .Artist}}
             <div class="card">
                 <a href="/artist/{{.Id}}">
                     <img src="{{.Image}}" alt="{{.Name}}">
