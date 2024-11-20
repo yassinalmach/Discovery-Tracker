@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"groupie/api"
 	"groupie/utils"
 	"net/http"
 	"strconv"
@@ -9,10 +10,11 @@ import (
 
 func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 	id := strings.TrimPrefix(r.URL.Path, "/artist/")
-	if ID, err := strconv.Atoi(id); err != nil || ID < 1 && ID > 52 {
+	ID, err := strconv.Atoi(id)
+	if err != nil || ID < 1 && ID > 52 {
 		utils.PageNotFound(w, r)
 		return
 	}
 
-	// parseTemplate(w, "artist.html", data)
+	parseTemplate(w, "artist.html", api.AllData[ID-1])
 }

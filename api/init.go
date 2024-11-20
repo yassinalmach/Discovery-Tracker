@@ -3,7 +3,7 @@ package api
 import "sync"
 
 var (
-	AllData      []Data
+	AllData      []Artists
 	AllArtists   []Artists
 	AllLocations LocationsData
 	AllDates     DatesData
@@ -30,16 +30,22 @@ func init() {
 
 	go func() {
 		defer wg.Done()
-		fetchData(URL+"relations", &AllRelations)
+		fetchData(URL+"relation", &AllRelations)
 	}()
 	wg.Wait()
 
 	for i := 0; i < 52; i++ {
-		data := Data{
-			Artist:   AllArtists[i],
-			Location: AllLocations.Index[i],
-			Date:     AllDates.Index[i],
-			Relation: AllRelations.Index[i],
+
+		data := Artists{
+			Id:           AllArtists[i].Id,
+			Name:         AllArtists[i].Name,
+			Image:        AllArtists[i].Image,
+			Members:      AllArtists[i].Members,
+			CreationDate: AllArtists[i].CreationDate,
+			FirstAlbum:   AllArtists[i].FirstAlbum,
+			Location:     AllLocations.Index[i],
+			Date:         AllDates.Index[i],
+			Relation:     AllRelations.Index[i],
 		}
 		AllData = append(AllData, data)
 	}

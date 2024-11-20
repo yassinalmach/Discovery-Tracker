@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"groupie/api"
 	"groupie/utils"
 	"net/http"
 )
@@ -11,5 +12,5 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// parseTemplate(w, "home.html", data)
+	parseTemplate(w, "home.html", api.AllArtists)
 }
