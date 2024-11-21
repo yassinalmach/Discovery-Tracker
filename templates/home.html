@@ -45,9 +45,9 @@
 
                 <div class="location">
                     <h3>Filter By Locations:</h3>
-                    <input type="text" name="location" list="filter-location" placeholder="type a place" autocomplete="off">
-                    <datalist id="filter-location">
-                    </datalist>
+                    <select name="location" id="filter-location">
+                        <option value="">-- select a location --</option>
+                    </select>
                 </div>
 
                 <div class="submit">
@@ -59,7 +59,7 @@
 
     <div class="container">
         <div class="artists">
-            {{range .Artist}}
+            {{range .}}
             <div class="card">
                 <a href="/artist/{{.Id}}">
                     <img src="{{.Image}}" alt="{{.Name}}">
@@ -69,6 +69,26 @@
             {{end}}
         </div>
     </div>
+    <script src="/static/locationData.js"></script>
+    <script>
+        const selectTag = document.getElementById('filter-location')
+
+        locationData.forEach(countryObj => {
+            const optgroup = document.createElement('optgroup')
+            optgroup.label = countryObj.country
+
+            // Create and append city options
+            countryObj.cities.forEach(city => {
+                const option = document.createElement('option')
+                option.value = city
+
+                option.textContent = city.split('_').join(' ')
+                optgroup.appendChild(option)
+            })
+
+            selectTag.appendChild(optgroup)
+        })
+    </script>
 </body>
 
 </html>
