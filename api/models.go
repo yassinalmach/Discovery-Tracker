@@ -1,6 +1,8 @@
 package api
 
-import "sync"
+import (
+	"sync"
+)
 
 const URL = "https://groupietrackers.herokuapp.com/api/"
 
