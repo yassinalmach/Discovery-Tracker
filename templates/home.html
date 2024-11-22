@@ -19,35 +19,39 @@
         <!-- filter section -->
         <div class="filter-section">
             <form action="/" method="POST" class="filter-form">
-                <div class="creation-date">
-                    <h3>Filter By Creation Date:</h3>
-                    <input type="number" min="1957" max="2024" placeholder="Min" name="minValueDate">
-                    <input type="number" min="1957" max="2024" placeholder="Max" name="maxValueDate">
-                </div>
+                <div class="flex">
+                    <div class="creation-date">
+                        <h3>Filter By Creation Date:</h3>
+                        <input type="number" min="1957" max="2024" placeholder="Min" name="minValueDate">
+                        <input type="number" min="1957" max="2024" placeholder="Max" name="maxValueDate">
+                    </div>
 
-                <div class="members">
-                    <h3>Filter By Members:</h3>
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="1">1
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="2">2
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="3">3
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="4">4
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="5">5
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="6">6
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="7">7
-                    <input type="checkbox" id="nbrMembers" name="nbrMembers" value="8">8
-                </div>
+                    <div class="members">
+                        <h3>Filter By Members:</h3>
+                        <div class="numbers">
+                            <label><input type="checkbox" name="nbrMembers" value="1"><span>1</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="2"><span>2</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="3"><span>3</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="4"><span>4</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="5"><span>5</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="6"><span>6</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="7"><span>7</span></label>
+                            <label><input type="checkbox" name="nbrMembers" value="8"><span>8</span></label>
+                        </div>
+                    </div>
 
-                <div class="first-album">
-                    <h3>Filter By First Album:</h3>
-                    <input type="number" min="1960" max="2024" placeholder="Min" name="minValueAlbum">
-                    <input type="number" min="1960" max="2024" placeholder="Max" name="maxValueAlbum">
-                </div>
+                    <div class="first-album">
+                        <h3>Filter By First Album:</h3>
+                        <input type="number" min="1960" max="2024" placeholder="Min" name="minValueAlbum">
+                        <input type="number" min="1960" max="2024" placeholder="Max" name="maxValueAlbum">
+                    </div>
 
-                <div class="location">
-                    <h3>Filter By Locations:</h3>
-                    <select name="location" id="filter-location">
-                        <option value="">-- select a location --</option>
-                    </select>
+                    <div class="location">
+                        <h3>Filter By Locations:</h3>
+                        <select name="location" id="filter-location">
+                            <option value="">-- select a location --</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="submit">
@@ -69,26 +73,26 @@
             {{end}}
         </div>
     </div>
-    <script src="/static/locationData.js"></script>
-    <script>
-        const selectTag = document.getElementById('filter-location')
+        <script src="/static/locationData.js"></script>
+        <script>
+            const selectTag = document.getElementById('filter-location')
 
-        locationData.forEach(countryObj => {
-            const optgroup = document.createElement('optgroup')
-            optgroup.label = countryObj.country
+            locationData.forEach(countryObj => {
+                const optgroup = document.createElement('optgroup')
+                optgroup.label = countryObj.country
 
-            // Create and append city options
-            countryObj.cities.forEach(city => {
-                const option = document.createElement('option')
-                option.value = city
+                // Create and append city options
+                countryObj.cities.forEach(city => {
+                    const option = document.createElement('option')
+                    option.value = city
 
-                option.textContent = city.split('_').join(' ')
-                optgroup.appendChild(option)
+                    option.textContent = city.split('_').join(' ')
+                    optgroup.appendChild(option)
+                })
+
+                selectTag.appendChild(optgroup)
             })
-
-            selectTag.appendChild(optgroup)
-        })
-    </script>
+        </script>
 </body>
 
 </html>
