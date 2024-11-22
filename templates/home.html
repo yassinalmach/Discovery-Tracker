@@ -12,20 +12,24 @@
 
 <body>
     <div class="top-section">
+        <!-- header -->
         <a href="/">
             <h1>Groupie Tracker</h1>
         </a>
         <h2>Discover the best artists</h2>
+
         <!-- filter section -->
         <div class="filter-section">
-            <form action="/" method="POST" class="filter-form">
+            <form action="/" method="POST">
                 <div class="flex">
-                    <div class="creation-date">
+                    <!-- filter by creation date -->
+                    <div>
                         <h3>Filter By Creation Date:</h3>
                         <input type="number" min="1957" max="2024" placeholder="Min" name="minValueDate">
                         <input type="number" min="1957" max="2024" placeholder="Max" name="maxValueDate">
                     </div>
 
+                    <!-- filter by members -->
                     <div class="members">
                         <h3>Filter By Members:</h3>
                         <div class="numbers">
@@ -40,13 +44,15 @@
                         </div>
                     </div>
 
-                    <div class="first-album">
+                    <!-- filter by first album -->
+                    <div>
                         <h3>Filter By First Album:</h3>
                         <input type="number" min="1960" max="2024" placeholder="Min" name="minValueAlbum">
                         <input type="number" min="1960" max="2024" placeholder="Max" name="maxValueAlbum">
                     </div>
 
-                    <div class="location">
+                    <!-- filter by location -->
+                    <div>
                         <h3>Filter By Locations:</h3>
                         <select name="location" id="filter-location">
                             <option value="">-- select a location --</option>
@@ -54,9 +60,7 @@
                     </div>
                 </div>
 
-                <div class="submit">
-                    <button type="submit" class="submit">Submit</button>
-                </div>
+                <button type="submit" class="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -73,26 +77,28 @@
             {{end}}
         </div>
     </div>
-        <script src="/static/locationData.js"></script>
-        <script>
-            const selectTag = document.getElementById('filter-location')
+    
+    <script src="/static/locationData.js"></script>
+    <script>
+        // filter section
+        const selectTag = document.getElementById('filter-location')
 
-            locationData.forEach(countryObj => {
-                const optgroup = document.createElement('optgroup')
-                optgroup.label = countryObj.country
+        locationData.forEach(countryObj => {
+            const optgroup = document.createElement('optgroup')
+            optgroup.label = countryObj.country
 
-                // Create and append city options
-                countryObj.cities.forEach(city => {
-                    const option = document.createElement('option')
-                    option.value = city
+            // Create and append city options
+            countryObj.cities.forEach(city => {
+                const option = document.createElement('option')
+                option.value = city
 
-                    option.textContent = city.split('_').join(' ')
-                    optgroup.appendChild(option)
-                })
-
-                selectTag.appendChild(optgroup)
+                option.textContent = city.split('_').join(' ')
+                optgroup.appendChild(option)
             })
-        </script>
+
+            selectTag.appendChild(optgroup)
+        })
+    </script>
 </body>
 
 </html>
