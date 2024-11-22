@@ -17,6 +17,16 @@
             <h1>Groupie Tracker</h1>
         </a>
         <h2>Discover the best artists</h2>
+        <!-- search section -->
+        <form action="/" method="GET" class="search-form">
+            <input type="text" name="search" id="search-input" list="search-suggestions" placeholder="Search artists, members, locations..." autocomplete="off">
+            <datalist id="search-suggestions">
+                {{range .Suggestions}}
+                <option value="{{.Value}}">{{.Value}} - {{.Type}}</option>
+                {{end}}
+            </datalist>
+            <button type="submit">Search</button>
+        </form>
 
         <!-- filter section -->
         <div class="filter-section">

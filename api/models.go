@@ -42,6 +42,11 @@ type RelationsData struct {
 	Index []Relations
 }
 
+type SuggestionModel struct {
+	Type  string
+	Value string
+}
+
 var (
 	AllArtists   []Artists
 	AllLocations LocationsData

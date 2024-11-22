@@ -1,10 +1,18 @@
 package handlers
 
 import (
+	"groupie/api"
 	"groupie/features"
 	"groupie/utils"
 	"net/http"
+	"strings"
 )
+
+type Data struct {
+	Artists     []api.Artists
+	Suggestions []api.SuggestionModel
+	Query       string
+}
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
@@ -12,7 +20,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// filter section
+	// ****** filter section ******
 	var filter features.Filter
 
 	// parse values
@@ -29,5 +37,27 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "bad request", 400)
 	}
 
-	parseTemplate(w, "home.html", filteredData)
+	// ****** search section ******
+	query := strings.ToLower(r.URL.Query().Get("search"))
+	if query != "" {
+		filteredData = searchFunc(query)
+	}
+
+	suggestions := generateSuggetions()
+
+	pageData := Data{
+		Artists:     filteredData,
+		Query:       query,
+		Suggestions: suggestions,
+	}
+
+	parseTemplate(w, "home.html", pageData)
+}
+
+func generateSuggetions() []api.SuggestionModel {
+	return nil
+}
+
+func searchFunc(query string) []api.Artists {
+	return nil
 }
