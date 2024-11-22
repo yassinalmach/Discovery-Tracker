@@ -8,7 +8,7 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", handlers.HomeHandler)
+	mux.HandleFunc("GET /", handlers.HomeHandler)
 	mux.HandleFunc("GET /artist/", handlers.ArtistHandler)
 	mux.HandleFunc("GET /static/", handlers.ServeStaticFiles)
 
