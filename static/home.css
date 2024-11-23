@@ -23,16 +23,68 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+/* search */
+.search-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#search-input {
+    background-color: rgba(22, 22, 22, 0.808);
+    width: 60%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #da9f59;
+    border-radius: 5px;
+    color: #ffe4c4;
+    
+}
+
+#search-input::placeholder {
+    color: #fdd4a3;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #da9f59;
+    color: #161616;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.search-form button:hover {
+    background-color: #e2b379;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    color: #da9f59;
+}
+
+.no-results {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    color: #ffe4c4;
+}
+
+/* filter */
 .filter-section {
     background: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(218, 159, 89, 0.1); /* subtle border */
+    border: 1px solid rgba(218, 159, 89, 0.1);
     border-radius: 15px;
     color: #ffe4c4;
     padding: 10px;
     margin: auto;
     text-align: center;
     width: 700px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* subtle shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     margin-top: 20vh;
 }
@@ -55,7 +107,7 @@ body {
 
 /* Input fields styling */
 .filter-section input[type="number"] {
-    background: rgba(34, 34, 34, 0.8);
+    background-color: rgba(22, 22, 22, 0.808);
     color: #ffe4c4;
     border: 1px solid #da9f59;
     border-radius: 5px;
@@ -65,6 +117,11 @@ body {
     font-weight: 600;
     outline: none;
     transition: all 0.3s ease;
+
+}
+
+.filter-section input[type="number"]::placeholder {
+    color: #fdd4a3;
 }
 
 .filter-section input[type="number"]:focus {
@@ -84,7 +141,8 @@ select {
     margin-bottom: 10px;
     outline: none;
     transition: all 0.3s ease;
-    appearance: none; /* removes default arrow */
+    appearance: none;
+    /* removes default arrow */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23da9f59' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - 8px) center;
@@ -100,7 +158,7 @@ select:focus {
     display: flex;
     justify-content: center;
     gap: 10px;
-    
+
 }
 
 .members input {
@@ -115,7 +173,7 @@ select:focus {
     color: #ffe4c4;
     text-align: center;
     font-size: 18px;
-    width: 18px; 
+    width: 18px;
     height: 18px;
     font-weight: 600;
     padding: 6px;
@@ -225,6 +283,7 @@ a {
         font-size: 7vw;
 
     }
+
     h2 {
         font-size: 7vw;
 
