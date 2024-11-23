@@ -38,7 +38,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// ****** search section ******
-	query := strings.ToLower(r.URL.Query().Get("search"))
+	query := strings.ToLower(r.FormValue("search"))
+
 	if query != "" {
 		filteredData = searchFunc(query)
 	}
@@ -59,5 +60,23 @@ func generateSuggetions() []api.SuggestionModel {
 }
 
 func searchFunc(query string) []api.Artists {
-	return nil
+	var filteredData []api.Artists
+	for _, artist := range api.AllArtists {
+		if strings.Contains(strings.ToLower(artist.Name), query) ||
+			strings.Contains(strings.ToLower(artist.FirstAlbum), query) ||
+			strings.Contains(string(rune(artist.CreationDate)), query) ||
+			containsAny(artist.Members, query) || containsAny(artist.Location.Location, query) {
+			filteredData = append(filteredData, artist)
+		}
+	}
+	return filteredData
+}
+
+func containsAny(value []string, query string) bool {
+	for _, v := range value {
+		if strings.Contains(strings.ToLower(v), query) {
+			return true
+		}
+	}
+	return false
 }

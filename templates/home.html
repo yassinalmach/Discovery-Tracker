@@ -17,14 +17,10 @@
             <h1>Groupie Tracker</h1>
         </a>
         <h2>Discover the best artists</h2>
+        
         <!-- search section -->
         <form action="/" method="GET" class="search-form">
             <input type="text" name="search" id="search-input" list="search-suggestions" placeholder="Search artists, members, locations..." autocomplete="off">
-            <datalist id="search-suggestions">
-                {{range .Suggestions}}
-                <option value="{{.Value}}">{{.Value}} - {{.Type}}</option>
-                {{end}}
-            </datalist>
             <button type="submit">Search</button>
         </form>
 
@@ -76,8 +72,17 @@
     </div>
 
     <div class="container">
+        <div class="search-text">
+            {{if .Query}}
+                {{if .Artists}}
+                    <h3 class="search-title">Search Results for "{{.Query}}"</h3>
+                {{else}}
+                    <p class="no-results">No results found.</p>
+                {{end}}
+            {{end}}
+        </div>
         <div class="artists">
-            {{range .}}
+            {{range .Artists}}
             <div class="card">
                 <a href="/artist/{{.Id}}">
                     <img src="{{.Image}}" alt="{{.Name}}">
