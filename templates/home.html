@@ -20,7 +20,7 @@
         
         <!-- search section -->
         <form action="/" method="GET" class="search-form">
-            <input type="text" name="search" id="search-input" list="search-suggestions" placeholder="Search artists, members, locations..." autocomplete="off">
+            <input type="text" name="search" id="search-input" list="search-suggestions" placeholder="Type here..." autocomplete="off">
             <datalist id="search-suggestions">
                 {{range .Suggestions}}
                 <option value="{{.Value}}">{{.Type}}</option>
@@ -71,18 +71,18 @@
                     </div>
                 </div>
 
-                <button type="submit" class="submit">Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 
     <div class="container">
-        <div class="search-text">
+        <div>
             {{if .Query}}
                 {{if .Artists}}
                     <h3 class="search-title">Search Results for "{{.Query}}"</h3>
                 {{else}}
-                    <p class="no-results">No results found.</p>
+                    <p class="search-title">No results found.</p>
                 {{end}}
             {{end}}
         </div>

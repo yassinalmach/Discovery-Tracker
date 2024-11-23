@@ -3,10 +3,13 @@
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+body {
+    background-color: #161616;
+    color: white;
+    font-family: "Montserrat", sans-serif;
 }
 
+/***** top section *****/
 .top-section {
     height: 95vh;
     background: url("/static/img/dark1.jpg") center;
@@ -17,16 +20,27 @@ html {
     margin-bottom: 30px;
 }
 
-body {
-    background-color: #161616;
-    color: white;
-    font-family: "Montserrat", sans-serif;
+h1 {
+    font-size: 100px;
+    text-align: center;
+    padding-top: 5vh;
+    letter-spacing: 1.5px;
+    color: #da9f59;
 }
 
-/* search */
-.search-form {
+h2 {
+    font-size: 70px;
     text-align: center;
     margin-top: 20px;
+    letter-spacing: 1.5px;
+    color: #ffe4c4;
+    margin-bottom: 5vh;
+}
+
+/***** search *****/
+.search-form {
+    text-align: center;
+    margin-block: 20px;
 }
 
 #search-input {
@@ -34,29 +48,34 @@ body {
     width: 60%;
     max-width: 500px;
     padding: 10px;
+    margin-right: 5px;
     font-size: 16px;
     border: 1px solid #da9f59;
     border-radius: 5px;
     color: #ffe4c4;
-    
+
 }
 
 #search-input::placeholder {
     color: #fdd4a3;
 }
 
-.search-form button {
-    padding: 10px 20px;
-    font-size: 16px;
+button {
     background-color: #da9f59;
     color: #161616;
-    border: none;
     border-radius: 5px;
+    border: none;
+    padding: 9px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.9px;
     cursor: pointer;
-    margin-left: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 1px 1px #f8c88d;
 }
 
-.search-form button:hover {
+button:hover {
+    transform: scale(1.03);
     background-color: #e2b379;
 }
 
@@ -67,26 +86,18 @@ body {
     color: #da9f59;
 }
 
-.no-results {
-    text-align: center;
-    font-size: 24px;
-    margin: 20px 0;
-    color: #ffe4c4;
-}
-
-/* filter */
+/***** filter *****/
 .filter-section {
-    background: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(218, 159, 89, 0.1);
+    background: #14141466;
+    border: 1px solid #daa05948;
     border-radius: 15px;
-    color: #ffe4c4;
-    padding: 10px;
+    padding: 15px;
     margin: auto;
     text-align: center;
     width: 700px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px #00000033;
     backdrop-filter: blur(10px);
-    margin-top: 20vh;
+    margin-top: 50px;
 }
 
 .flex {
@@ -98,8 +109,8 @@ body {
 
 /* Filter Headings */
 .filter-section h3 {
-    color: #f7b86b;
-    font-size: 20px;
+    color: #f2b468;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 5px;
@@ -107,8 +118,8 @@ body {
 
 /* Input fields styling */
 .filter-section input[type="number"] {
-    background-color: rgba(22, 22, 22, 0.808);
-    color: #ffe4c4;
+    background-color: #161616ce;
+    color: #fdd4a3;
     border: 1px solid #da9f59;
     border-radius: 5px;
     padding: 8px 10px;
@@ -124,33 +135,26 @@ body {
     color: #fdd4a3;
 }
 
-.filter-section input[type="number"]:focus {
+.filter-section input[type="number"]:focus,
+select:focus {
     border-color: #ffe6c7;
-    box-shadow: 0 0 0 2px rgba(255, 202, 138, 0.2);
 }
 
-/* Location dropdown styling */
 select {
-    background: rgba(34, 34, 34, 0.8);
+    background: #161616ce;
+    color: #fdd4a3;
     border: 1px solid #da9f59;
     border-radius: 5px;
-    color: #ffe4c4;
-    padding: 8px;
+    padding: 8px 10px;
     width: 200px;
-    cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     outline: none;
     transition: all 0.3s ease;
     appearance: none;
-    /* removes default arrow */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23da9f59' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - 8px) center;
-    padding-right: 30px;
-}
-
-select:focus {
-    border-color: #fdebd5;
+    cursor: pointer;
 }
 
 .numbers {
@@ -158,19 +162,13 @@ select:focus {
     display: flex;
     justify-content: center;
     gap: 10px;
-
-}
-
-.members input {
-    position: absolute;
-    opacity: 0;
 }
 
 .members span {
-    background: rgba(34, 34, 34, 0.8);
+    background: #161616ce;
+    color: #fdd4a3;
     border: 1px solid #da9f59;
     border-radius: 5px;
-    color: #ffe4c4;
     text-align: center;
     font-size: 18px;
     width: 18px;
@@ -184,54 +182,22 @@ select:focus {
     transition: all 0.3s ease;
 }
 
+.members input {
+    position: absolute;
+    opacity: 0;
+}
+
 .members input:checked+span {
     background: #da9f59;
     color: #161616;
     box-shadow: 0 0 0 2px rgba(218, 159, 89, 0.3);
 }
 
-/* Add hover effect */
 .members span:hover {
     border-color: #f5d1a5;
 }
 
-/* Submit button styling */
-button {
-    background-color: #f5d1a5;
-    border: none;
-    padding: 8px 25px;
-    color: #161616;
-    font-size: 18px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-button:hover {
-    transform: scale(1.03);
-}
-
-/* rest */
-h1 {
-    font-size: 5vw;
-    text-align: center;
-    padding-top: 5vh;
-    letter-spacing: 1.5px;
-    color: #da9f59;
-}
-
-h2 {
-    text-align: center;
-    font-size: 5vw;
-    margin-top: 20px;
-    letter-spacing: 1.5px;
-    color: #ffe4c4;
-    margin-bottom: 7vh;
-}
-
+/***** rest *****/
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -241,7 +207,6 @@ h2 {
 .artists {
     display: flex;
     flex-wrap: wrap;
-    /* margin: 0px 150px; */
     gap: 30px;
     justify-content: center;
 }
@@ -251,7 +216,6 @@ h2 {
     padding: 5px;
     border: 1px groove #fdebd5;
     border-radius: 15px;
-    /* width: fit-content; */
 }
 
 .card:hover {
@@ -263,7 +227,6 @@ h2 {
 img {
     border: 1px solid #ffffff;
     border-radius: 8px;
-    /* width: fit-content; */
 }
 
 .name {
@@ -280,7 +243,7 @@ a {
 
 @media (max-width: 1024px) {
     h1 {
-        font-size: 7vw;
+        font-size: 9vw;
 
     }
 
@@ -291,37 +254,12 @@ a {
 }
 
 @media (max-width: 768px) {
-    h1 {
-        font-size: 9vw;
-
-    }
-
-    h2 {
-        font-size: 7vw;
-
-    }
-
     .filter-section {
-        width: 70%;
-        margin-top: 10vh;
-    }
-
-    .filter-section h3 {
-        font-size: 20px;
-    }
-
-    .flex {
-        gap: 10px;
-    }
-
-    .numbers {
-        flex-wrap: wrap;
-        max-width: 200px;
-        margin: 0 auto 14px;
+        width: 90%;
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 425px) {
     h1 {
         font-size: 11vw;
         letter-spacing: normal;
@@ -334,5 +272,17 @@ a {
 
     .filter-section h3 {
         font-size: 18px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 9px 15px;
+        letter-spacing: normal;
+    }
+
+    .numbers {
+        flex-wrap: wrap;
+        max-width: 200px;
+        margin: 0 auto 14px;
     }
 }
