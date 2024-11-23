@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-type Data struct {
+type data struct {
 	Artists     []api.Artists
 	Suggestions []api.SuggestionModel
 	Query       string
@@ -44,7 +44,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	suggestions := features.GenerateSuggetions()
 
-	pageData := Data{
+	pageData := data{
 		Artists:     filteredData,
 		Query:       query,
 		Suggestions: suggestions,

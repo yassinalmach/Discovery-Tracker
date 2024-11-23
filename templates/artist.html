@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="/static/artist.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
-    <title>{{.Name}}</title>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=maps,marker&v=beta"
+        defer></script>
+
+    <title>{{.Artist.Name}}</title>
 </head>
 
 <body>
     <div class="container">
         <!-- header part -->
         <div class="header">
-            <p>{{.Name}}</p>
+            <p>{{.Artist.Name}}</p>
             <a href="/">Home</a>
         </div>
 
@@ -25,7 +29,7 @@
                 <div class="members">
                     <h3>Members:</h3>
                     <ul>
-                        {{range .Members}}
+                        {{range .Artist.Members}}
                         <li>{{.}}</li>
                         {{end}}
                     </ul>
@@ -34,14 +38,14 @@
                 <div>
                     <h3>Creation Date:</h3>
                     <ul>
-                        <li>{{.CreationDate}}</li>
+                        <li>{{.Artist.CreationDate}}</li>
                     </ul>
                 </div>
 
                 <div>
                     <h3>First Album:</h3>
                     <ul>
-                        <li>{{.FirstAlbum}}</li>
+                        <li>{{.Artist.FirstAlbum}}</li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +56,7 @@
             <div class="location">
                 <h3>Concert Location:</h3>
                 <ul>
-                    {{range .Location.Location}}
+                    {{range .Artist.Location.Location}}
                     <li>{{.}}</li>
                     {{end}}
                 </ul>
@@ -61,7 +65,7 @@
             <div class="dates">
                 <h3>Concert Dates:</h3>
                 <ul>
-                    {{range .Date.Date}}
+                    {{range .Artist.Date.Date}}
                     <li>{{.}}</li>
                     {{end}}
                 </ul>
@@ -69,7 +73,7 @@
 
             <div class="relation">
                 <h3>Locations with Dates:</h3>
-                {{range $key, $values := .Relation.Relation}}
+                {{range $key, $values := .Artist.Relation.Relation}}
                 <ul>
                     <li>{{$key}}:</li>
                     {{range $values}}
@@ -78,6 +82,15 @@
                 </ul>
                 {{end}}
             </div>
+        </div>
+
+        <!-- map part -->
+        <div class="map">
+            <gmp-map center="24.0520276,-15.7035682" zoom="3" map-id="DEMO_MAP_ID" style="height: 400px">
+                {{range .Coordinate}}
+                <gmp-advanced-marker position="{{.Addr}}" title="{{.Location}}"></gmp-advanced-marker>
+                {{end}}
+            </gmp-map>
         </div>
     </div>
 </body>
