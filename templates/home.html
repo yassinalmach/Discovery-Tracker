@@ -21,6 +21,11 @@
         <!-- search section -->
         <form action="/" method="GET" class="search-form">
             <input type="text" name="search" id="search-input" list="search-suggestions" placeholder="Search artists, members, locations..." autocomplete="off">
+            <datalist id="search-suggestions">
+                {{range .Suggestions}}
+                <option value="{{.Value}}">{{.Type}}</option>
+                {{end}}
+            </datalist>
             <button type="submit">Search</button>
         </form>
 

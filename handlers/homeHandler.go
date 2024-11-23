@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"groupie/api"
 	"groupie/features"
 	"groupie/utils"
@@ -56,7 +57,38 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func generateSuggetions() []api.SuggestionModel {
-	return nil
+	var suggestion []api.SuggestionModel
+	isAdded := make(map[string]bool)
+
+	for _, artist := range api.AllArtists {
+		// Add artist name
+		addSuggestion(&suggestion, isAdded, "artist/band", artist.Name)
+
+		// Add first album
+		addSuggestion(&suggestion, isAdded, "first album", artist.FirstAlbum)
+
+		// Add creation date
+		addSuggestion(&suggestion, isAdded, "creation date", fmt.Sprintf("%v", artist.CreationDate))
+
+		// Add members
+		for _, member := range artist.Members {
+			addSuggestion(&suggestion, isAdded, "member", member)
+		}
+
+		// Add locations
+		for _, loc := range artist.Location.Location {
+			addSuggestion(&suggestion, isAdded, "location", loc)
+		}
+	}
+	return suggestion
+}
+
+func addSuggestion(result *[]api.SuggestionModel, isAdded map[string]bool, typeName, value string) {
+	key := typeName + ":" + value
+	if !isAdded[key] {
+		*result = append(*result, api.SuggestionModel{Type: typeName, Value: value})
+		isAdded[key] = true
+	}
 }
 
 func searchFunc(query string) []api.Artists {
@@ -64,7 +96,7 @@ func searchFunc(query string) []api.Artists {
 	for _, artist := range api.AllArtists {
 		if strings.Contains(strings.ToLower(artist.Name), query) ||
 			strings.Contains(strings.ToLower(artist.FirstAlbum), query) ||
-			strings.Contains(string(rune(artist.CreationDate)), query) ||
+			strings.Contains(fmt.Sprintf("%v", artist.CreationDate), query) ||
 			containsAny(artist.Members, query) || containsAny(artist.Location.Location, query) {
 			filteredData = append(filteredData, artist)
 		}
